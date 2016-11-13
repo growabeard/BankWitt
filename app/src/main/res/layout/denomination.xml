@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:gravity="center_vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayAmount"
+        android:layout_weight=".3"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:src="@drawable/ic_remove_white_24dp"
+        android:layout_weight=".1"
+        android:id="@+id/subtractCount"
+        android:layout_gravity="center"
+        android:background="@color/subtractBkgrnd"
+        android:elevation="2dp"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/count"
+        android:layout_weight=".2"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/text_margin"
+        android:paddingRight="@dimen/text_margin"
+        android:nextFocusUp="@id/count"
+        android:nextFocusLeft="@id/count"
+        android:inputType="number"
+        android:textSize="30sp"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_white_24dp"
+        android:id="@+id/addCount"
+        android:layout_weight=".1"
+        android:layout_gravity="center"
+        android:background="@color/addBkgrnd"
+        android:elevation="2dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/amount"
+        android:layout_weight=".3"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:gravity="center"/>
+</LinearLayout>
