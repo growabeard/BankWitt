@@ -18,5 +18,7 @@ public class DenominationContract {
         public static final String VALUE_SUBTITLE = "how much this denomination is worth";
         public static final String DISPLAY_AMOUNT_TITLE = "display_amount";
         public static final String DISPLAY_AMOUNT_SUBTITLE = "pretty print version of denomination";
+        public static final String ID = "id";
+
     }
 }

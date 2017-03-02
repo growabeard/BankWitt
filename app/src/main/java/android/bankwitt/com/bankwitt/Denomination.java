@@ -11,7 +11,8 @@ public class Denomination {
     private int count;
     private String displayAmount;
     private Integer value;
-    private String id;
+    private Integer id;
+    private boolean changed;
 
     NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
 
@@ -29,7 +30,13 @@ public class Denomination {
     public void setValue(BigDecimal thatValue) {
         value = thatValue.multiply(new BigDecimal(100)).intValue();
     }
+    public void setValue(Integer thatValue) {
+        value = thatValue * 100;
+    }
     public void setCount(int thatCount) {
+        if(thatCount < 0) {
+            this.count = 0;
+        }
         this.count = thatCount;
     }
 
@@ -45,11 +52,19 @@ public class Denomination {
         return n.format(total);
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String thatId) {
+    public void setId(Integer thatId) {
         id = thatId;
+    }
+
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        this.changed = changed;
     }
 }

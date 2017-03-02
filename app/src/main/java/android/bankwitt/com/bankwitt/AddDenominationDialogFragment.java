@@ -6,6 +6,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,26 +77,11 @@ public class AddDenominationDialogFragment extends DialogFragment {
     }
 
     public Integer getAddCount() {
-        return null;
-//        return Integer.parseInt(addCount.getText().toString());
+        return Integer.parseInt(addCount.getText().toString());
     }
 
     public BigDecimal getAddDecimalValue() {
-        return null;
-//        return new BigDecimal(addDecimalValue.getText().toString());
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_denomination_dialog, container, false);
-
-        addDisplayAmount = (EditText) view.findViewById(R.id.addDisplayAmount);
-        addDecimalValue = (EditText) view.findViewById(R.id.addDecimalValue);
-        addCount = (EditText) view.findViewById(R.id.addCount);
-
-        return view;
+        return new BigDecimal(addDecimalValue.getText().toString());
     }
 
     @Override
@@ -121,15 +107,24 @@ public class AddDenominationDialogFragment extends DialogFragment {
         // Get the layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         builder.setTitle("Add Denomination");
+        View view = inflater.inflate(R.layout.fragment_add_denomination_dialog, null);
+
+        addDisplayAmount = (EditText) view.findViewById(R.id.addDisplayAmount);
+        addDecimalValue = (EditText) view.findViewById(R.id.addDecimalValue);
+        addCount = (EditText) view.findViewById(R.id.addCount);
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.fragment_add_denomination_dialog, null))
+        builder.setView(view)
         // Add action buttons
         .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                mListener.addDenominationFromDialog(getAddCount(), getAddDecimalValue(), getAddDisplayAmount());
+                        int count = Integer.parseInt(addCount.getText().toString());
+                        String displayAmount = addDisplayAmount.getText().toString();
+                        BigDecimal decValue = new BigDecimal(addDecimalValue.getText().toString());
+                        Log.d("addStuff", "Added " + count + " of " + displayAmount + " at " + decValue);
 
+                        mListener.addDenominationFromDialog(count, decValue, displayAmount);
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
